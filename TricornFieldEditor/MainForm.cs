@@ -256,10 +256,9 @@ namespace TricornFieldEditor
                 switch (casingComboBox.Text) {
                     case "Title Case":
                         newValue = newValue.ToLower();
-
-                        var textInfo = CultureInfo.CurrentCulture.TextInfo;
                         var acronyms = acronymsTextBox.Text.Split(new[] {"|"}, StringSplitOptions.None);
-                        if (acronyms.Length > 0) {
+                        if (acronyms.Length > 0)
+                        {
                             foreach (var acronym in acronyms) {
                                 var regex = new Regex("\\b(?-i)" + acronym.ToLower() + "\\b");
 
@@ -272,6 +271,7 @@ namespace TricornFieldEditor
                         }
                         // convert value to lower case first as ToTitleCase treats all 
                         // UPPERCASE words as acronyms
+                        var textInfo = CultureInfo.CurrentCulture.TextInfo;
                         newValue = textInfo.ToTitleCase(newValue);
                         newValue = newValue.Replace("Mm", "mm");
                         break;
@@ -405,7 +405,12 @@ namespace TricornFieldEditor
                     manualEditTextBox.Enabled = false;
                 }
                 else {
-                    manualEditTextBox.Text = valuesEnhancedListView.SelectedItems[0].SubItems[1].Text;
+                    if (valuesEnhancedListView.SelectedItems[0].SubItems.Count == 1) {
+                        manualEditTextBox.Enabled = false;
+                    }
+                    else {
+                        manualEditTextBox.Text = valuesEnhancedListView.SelectedItems[0].SubItems[1].Text;
+                    }
                 }
             }
         }
@@ -413,6 +418,12 @@ namespace TricornFieldEditor
         private void manualEditTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             valuesEnhancedListView.SelectedItems[0].SubItems[1].Text = manualEditTextBox.Text;
+        }
+
+        private void valuesEnhancedListView_ItemsRemoved(object sender, EventArgs e)
+        {
+            manualEditTextBox.Text = string.Empty;
+            manualEditTextBox.Enabled = false;
         }
     }
 }

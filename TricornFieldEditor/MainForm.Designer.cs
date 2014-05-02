@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.configurationGroupBox = new System.Windows.Forms.GroupBox();
             this.databaseTextBox = new System.Windows.Forms.TextBox();
             this.serverTextBox = new System.Windows.Forms.TextBox();
@@ -35,9 +36,13 @@
             this.testConnectionButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGroupBox = new System.Windows.Forms.GroupBox();
+            this.manualEditTextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.testRunButton = new System.Windows.Forms.Button();
             this.updateTricornButton = new System.Windows.Forms.Button();
             this.editorGroupBox = new System.Windows.Forms.GroupBox();
+            this.saveAcronymsButton = new System.Windows.Forms.Button();
+            this.acronymsTextBox = new System.Windows.Forms.TextBox();
             this.matchWholeWordComboBox = new System.Windows.Forms.CheckBox();
             this.matchCaseCheckBox = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,16 +51,13 @@
             this.findTextBox = new System.Windows.Forms.TextBox();
             this.columnComboBox = new System.Windows.Forms.ComboBox();
             this.tableComboBox = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.applyFilterButton = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.acronymsTextBox = new System.Windows.Forms.TextBox();
-            this.saveAcronymsButton = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.manualEditTextBox = new System.Windows.Forms.TextBox();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.valuesEnhancedListView = new nGenLibrary.Controls.EnhancedListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -102,6 +104,7 @@
             this.label7.Size = new System.Drawing.Size(63, 17);
             this.label7.TabIndex = 0;
             this.label7.Text = "Database";
+            this.toolTip.SetToolTip(this.label7, "The name of the database on the server");
             // 
             // testConnectionButton
             // 
@@ -110,6 +113,7 @@
             this.testConnectionButton.Size = new System.Drawing.Size(265, 35);
             this.testConnectionButton.TabIndex = 2;
             this.testConnectionButton.Text = "Connect to Tricorn";
+            this.toolTip.SetToolTip(this.testConnectionButton, "Establishes a connection to the Tricorn back-end using the data provided");
             this.testConnectionButton.UseVisualStyleBackColor = true;
             this.testConnectionButton.Click += new System.EventHandler(this.testConnectionButton_Click);
             // 
@@ -121,6 +125,7 @@
             this.label6.Size = new System.Drawing.Size(45, 17);
             this.label6.TabIndex = 0;
             this.label6.Text = "Server";
+            this.toolTip.SetToolTip(this.label6, "The server on which the Tricorn back-end resides");
             // 
             // dataGroupBox
             // 
@@ -135,6 +140,26 @@
             this.dataGroupBox.TabStop = false;
             this.dataGroupBox.Text = "Data";
             // 
+            // manualEditTextBox
+            // 
+            this.manualEditTextBox.Enabled = false;
+            this.manualEditTextBox.Location = new System.Drawing.Point(6, 560);
+            this.manualEditTextBox.Name = "manualEditTextBox";
+            this.manualEditTextBox.Size = new System.Drawing.Size(646, 25);
+            this.manualEditTextBox.TabIndex = 2;
+            this.manualEditTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.manualEditTextBox_KeyUp);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 540);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 17);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Manual edit";
+            this.toolTip.SetToolTip(this.label9, "After doing a test run, you can select a record and manually edit the new value. " +
+        "THIS WILL BE LOST IF YOU PERFORM ANOTHER TEST RUN!");
+            // 
             // testRunButton
             // 
             this.testRunButton.Enabled = false;
@@ -143,6 +168,7 @@
             this.testRunButton.Size = new System.Drawing.Size(246, 46);
             this.testRunButton.TabIndex = 2;
             this.testRunButton.Text = "Test run";
+            this.toolTip.SetToolTip(this.testRunButton, "Performs a test run so you can verify the changes before updating Tricorn");
             this.testRunButton.UseVisualStyleBackColor = true;
             this.testRunButton.Click += new System.EventHandler(this.testRunButton_Click);
             // 
@@ -154,6 +180,8 @@
             this.updateTricornButton.Size = new System.Drawing.Size(173, 46);
             this.updateTricornButton.TabIndex = 3;
             this.updateTricornButton.Text = "Update Tricorn";
+            this.toolTip.SetToolTip(this.updateTricornButton, "Updates Tricorn with the new values. THIS IS IRREVERSIBLE WITHOUT A CURRENT BACKU" +
+        "P OF THE TRICORN BACK-END!");
             this.updateTricornButton.UseVisualStyleBackColor = true;
             this.updateTricornButton.Click += new System.EventHandler(this.updateTricornButton_Click);
             // 
@@ -181,6 +209,26 @@
             this.editorGroupBox.TabIndex = 1;
             this.editorGroupBox.TabStop = false;
             this.editorGroupBox.Text = "Editor";
+            // 
+            // saveAcronymsButton
+            // 
+            this.saveAcronymsButton.Location = new System.Drawing.Point(9, 439);
+            this.saveAcronymsButton.Name = "saveAcronymsButton";
+            this.saveAcronymsButton.Size = new System.Drawing.Size(262, 28);
+            this.saveAcronymsButton.TabIndex = 10;
+            this.saveAcronymsButton.Text = "Save acronyms";
+            this.saveAcronymsButton.UseVisualStyleBackColor = true;
+            this.saveAcronymsButton.Click += new System.EventHandler(this.saveAcronymsButton_Click);
+            // 
+            // acronymsTextBox
+            // 
+            this.acronymsTextBox.Location = new System.Drawing.Point(9, 337);
+            this.acronymsTextBox.Multiline = true;
+            this.acronymsTextBox.Name = "acronymsTextBox";
+            this.acronymsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.acronymsTextBox.Size = new System.Drawing.Size(262, 96);
+            this.acronymsTextBox.TabIndex = 9;
+            this.acronymsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.acronymsTextBox_KeyPress);
             // 
             // matchWholeWordComboBox
             // 
@@ -214,6 +262,7 @@
             this.label3.Size = new System.Drawing.Size(109, 17);
             this.label3.TabIndex = 3;
             this.label3.Text = "Change casing to";
+            this.toolTip.SetToolTip(this.label3, "Choose which casing to apply to the current values");
             // 
             // casingComboBox
             // 
@@ -266,6 +315,17 @@
             this.tableComboBox.TabIndex = 0;
             this.tableComboBox.SelectedIndexChanged += new System.EventHandler(this.tableComboBox_SelectedIndexChanged);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 317);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(166, 17);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Acronyms (pipe separated)";
+            this.toolTip.SetToolTip(this.label8, "A list of acronyms separated by the pipe \'|\' character. These will always be in u" +
+        "pper case no matter which casing is chosen");
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -292,6 +352,7 @@
             this.label2.Size = new System.Drawing.Size(52, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Column";
+            this.toolTip.SetToolTip(this.label2, "The name of the column in the selected table whose values you want to update");
             // 
             // label1
             // 
@@ -301,6 +362,7 @@
             this.label1.Size = new System.Drawing.Size(40, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Table";
+            this.toolTip.SetToolTip(this.label1, "The name of the table in Tricorn which contains the data you want to update");
             // 
             // applyFilterButton
             // 
@@ -310,54 +372,10 @@
             this.applyFilterButton.Size = new System.Drawing.Size(227, 46);
             this.applyFilterButton.TabIndex = 2;
             this.applyFilterButton.Text = "Apply filter";
+            this.toolTip.SetToolTip(this.applyFilterButton, "Retreives all records from the selected table and column which match your selecti" +
+        "on criteria");
             this.applyFilterButton.UseVisualStyleBackColor = true;
             this.applyFilterButton.Click += new System.EventHandler(this.applyFilterButton_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 317);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(166, 17);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Acronyms (pipe separated)";
-            // 
-            // acronymsTextBox
-            // 
-            this.acronymsTextBox.Location = new System.Drawing.Point(9, 337);
-            this.acronymsTextBox.Multiline = true;
-            this.acronymsTextBox.Name = "acronymsTextBox";
-            this.acronymsTextBox.Size = new System.Drawing.Size(262, 96);
-            this.acronymsTextBox.TabIndex = 9;
-            this.acronymsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.acronymsTextBox_KeyPress);
-            // 
-            // saveAcronymsButton
-            // 
-            this.saveAcronymsButton.Location = new System.Drawing.Point(9, 439);
-            this.saveAcronymsButton.Name = "saveAcronymsButton";
-            this.saveAcronymsButton.Size = new System.Drawing.Size(262, 28);
-            this.saveAcronymsButton.TabIndex = 10;
-            this.saveAcronymsButton.Text = "Save acronyms";
-            this.saveAcronymsButton.UseVisualStyleBackColor = true;
-            this.saveAcronymsButton.Click += new System.EventHandler(this.saveAcronymsButton_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 540);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 17);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Manual edit";
-            // 
-            // manualEditTextBox
-            // 
-            this.manualEditTextBox.Enabled = false;
-            this.manualEditTextBox.Location = new System.Drawing.Point(6, 560);
-            this.manualEditTextBox.Name = "manualEditTextBox";
-            this.manualEditTextBox.Size = new System.Drawing.Size(646, 25);
-            this.manualEditTextBox.TabIndex = 2;
-            this.manualEditTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.manualEditTextBox_KeyUp);
             // 
             // valuesEnhancedListView
             // 
@@ -380,6 +398,7 @@
             this.valuesEnhancedListView.UseAlternatingBackColor = true;
             this.valuesEnhancedListView.UseCompatibleStateImageBehavior = false;
             this.valuesEnhancedListView.View = System.Windows.Forms.View.Details;
+            this.valuesEnhancedListView.ItemsRemoved += new System.EventHandler(this.valuesEnhancedListView_ItemsRemoved);
             this.valuesEnhancedListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.valuesEnhancedListView_ItemChecked);
             this.valuesEnhancedListView.SelectedIndexChanged += new System.EventHandler(this.valuesEnhancedListView_SelectedIndexChanged);
             // 
@@ -456,6 +475,7 @@
         private System.Windows.Forms.Button saveAcronymsButton;
         private System.Windows.Forms.TextBox manualEditTextBox;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 
