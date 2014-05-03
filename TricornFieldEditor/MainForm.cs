@@ -274,6 +274,15 @@ namespace TricornFieldEditor
                         var textInfo = CultureInfo.CurrentCulture.TextInfo;
                         newValue = textInfo.ToTitleCase(newValue);
                         newValue = newValue.Replace("Mm", "mm");
+
+                        var mcRegex = new Regex("(?-i)\\bMc[a-z]+");
+                        var match = mcRegex.Match(newValue);
+                        if (match.Success) {
+                            var charToConvert = newValue[match.Index + 2];
+                            var upperCaseChar = char.ToUpper(charToConvert);
+                            newValue = newValue.Remove(match.Index + 2, 1);
+                            newValue = newValue.Insert(match.Index + 2, upperCaseChar.ToString());
+                        }
                         break;
                     case "UPPER CASE":
                         newValue = newValue.ToUpper();
